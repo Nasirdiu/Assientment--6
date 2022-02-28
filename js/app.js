@@ -1,15 +1,24 @@
 const phoneSearch = () => {
   const searchInput = document.getElementById("Search-input");
+  //error
+  const error = document.getElementById("error");
+  error.style.display = "none";
   const SearchValue = searchInput.value;
   searchInput.value = "";
-  fetch(`https://openapi.programming-hero.com/api/phones?search=${SearchValue}`)
-    .then((res) => res.json())
-    .then((data) => displayPhone(data.data));
+  if (!isNaN(SearchValue)) {
+    error.style.display = "block";
+  } else{
+    fetch(
+      `https://openapi.programming-hero.com/api/phones?search=${SearchValue}`
+    )
+      .then((res) => res.json())
+      .then((data) => displayPhone(data.data));
+  }
 };
 // phoneSearch();
 const displayPhone = (search) => {
   const firstCard = document.getElementById("first-card");
-  firstCard.textContent='';
+  firstCard.textContent = "";
   search.forEach((phone) => {
     const div = document.createElement("div");
     div.classList.add("col");
