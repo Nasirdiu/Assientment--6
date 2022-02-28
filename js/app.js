@@ -8,12 +8,11 @@ const phoneSearch = () => {
 };
 // phoneSearch();
 const displayPhone = (search) => {
-  // console.log(search);
   const firstCard = document.getElementById("first-card");
+  firstCard.textContent='';
   search.forEach((phone) => {
-    // console.log(phone);
     const div = document.createElement("div");
-    div.classList.add('col');
+    div.classList.add("col");
     div.innerHTML = `
         <div class="card ">
           <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${phone.image}" class="card-img-top" alt="..." />
@@ -30,26 +29,31 @@ const displayPhone = (search) => {
   });
 };
 
-const displayId=id=>{
-    const url=`https://openapi.programming-hero.com/api/phone/${id}`
-    fetch(url)
-    .then(res=>res.json())
-    .then(data =>detailsDisplay(data.data))
-}
+const displayId = (id) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => detailsDisplay(data.data));
+};
 
-const detailsDisplay=(show)=>{
-   console.log(show);
-    const secendCard=document.getElementById('secend-card'); 
-    const div=document.createElement('div');
-    div.innerHTML=`
+const detailsDisplay = (show) => {
+  console.log(show);
+  const secendCard = document.getElementById("secend-card");
+  secendCard.textContent = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
     <div class="card">
           <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${show.image}" class="card-img-top" alt="..." />
           <div class="card-body">
-            <h4 class="card-title">Brand:${show.brand}</h4>
-            <h5 class="card-text">Phone Name:${show.phone_name}  </h5>
+          <h5 class="card-text"> ReleaseDate:-${show.releaseDate}  </h5>
+           <p class="card-title">ChipSet:-${show.mainFeatures.chipSet} </p>
+            <p class="card-title">Storage:-${show.mainFeatures.storage} </p>
+            <p class="card-title"> displaySize:-${show.mainFeatures.displaySize}</p>
+            <p class="card-title">Memory:-${show.mainFeatures.memory}  </p>
+            <p class="card-title">Sensors:-${show.mainFeatures.sensors} </p>
+          
           </div>
       </div>
-   `
-  secendCard.appendChild(div); 
-    }
-        
+   `;
+  secendCard.appendChild(div);
+};
