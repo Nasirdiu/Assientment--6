@@ -12,7 +12,7 @@ const phoneSearch = () => {
       `https://openapi.programming-hero.com/api/phones?search=${SearchValue}`
     )
       .then((res) => res.json())
-      .then((data) => displayPhone(data.data));
+      .then((data) => displayPhone(data.data.slice(0,20)));
   }
 };
 // phoneSearch();
@@ -26,7 +26,7 @@ const displayPhone = (search) => {
         const div = document.createElement("div");
         div.classList.add("col");
         div.innerHTML = `
-            <div class="card ">
+            <div class="card">
               <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${phone.image}" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h4 class="card-title">Brand:${phone.brand}</h4>
