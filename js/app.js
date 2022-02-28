@@ -19,23 +19,28 @@ const phoneSearch = () => {
 const displayPhone = (search) => {
   const firstCard = document.getElementById("first-card");
   firstCard.textContent = "";
-  search.forEach((phone) => {
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
-        <div class="card ">
-          <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${phone.image}" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h4 class="card-title">Brand:${phone.brand}</h4>
-            <h5 class="card-text">Phone Name:${phone.phone_name}  </h5>
-          </div>
-          <button onclick="displayId('${phone.slug}')" class="btn btn-outline-success w-25 mx-auto 
-          mb-3">Details</button>
-       
-      </div>`;
-
-    firstCard.appendChild(div);
-  });
+  if(search.length == 0){
+    error.style.display = "block";
+  }else{
+    search.forEach((phone) => {
+        const div = document.createElement("div");
+        div.classList.add("col");
+        div.innerHTML = `
+            <div class="card ">
+              <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${phone.image}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h4 class="card-title">Brand:${phone.brand}</h4>
+                <h5 class="card-text">Phone Name:${phone.phone_name}  </h5>
+              </div>
+              <button onclick="displayId('${phone.slug}')" class="btn btn-outline-success w-25 mx-auto 
+              mb-3">Details</button>
+           
+          </div>`;
+    
+        firstCard.appendChild(div);
+      });
+  }
+  
 };
 //id show
 const displayId = (id) => {
