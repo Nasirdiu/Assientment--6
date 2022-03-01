@@ -36,7 +36,7 @@ const displayPhone = (search) => {
               mb-3">Details</button>
            
           </div>`;
-
+          error.style.display = "none";
       firstCard.appendChild(div);
       block();
     });
