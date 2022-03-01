@@ -1,5 +1,7 @@
 const phoneSearch = () => {
   const searchInput = document.getElementById("Search-input");
+  const secendCard = document.getElementById("secend-card");
+  secendCard.textContent = "";
   //error
   const error = document.getElementById("error");
   spinner();
@@ -64,14 +66,14 @@ const detailsDisplay = (show) => {
           <h5 class="card-text"> ReleaseDate:-${
             show.releaseDate ? show.releaseDate : "No Release Date Found"
           }  </h5><hr>
-           <p class="card-title">ChipSet:-${show.mainFeatures.chipSet} </p><hr>
+           <p class="card-title"><h5>ChipSet</h5>:-${show.mainFeatures.chipSet} </p><hr>
             <p class="card-title">Storage:-${show.mainFeatures.storage} </p><hr>
             <p class="card-title"> displaySize:-${
               show.mainFeatures.displaySize
             }</p><hr>
             <p class="card-title">Memory:-${show.mainFeatures.memory}  </p><hr>
             <h4>Sensors Option :-</h4>
-            <p class="card-title">Sensors:-${show.mainFeatures.sensors} </p><hr>
+            <p class="card-title"><h6>Sensors</h6>:-${show.mainFeatures.sensors} </p><hr>
             <h4>Other Option:-</h4>
             <p class="card-title">Others Bluetooth:-${
               show.others?.Bluetooth
