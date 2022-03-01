@@ -4,3 +4,11 @@
 .card{
     min-height: 500px;
 }
+.body{
+    background-color: rgb(216, 196, 170);
+}
+#spinner {
+    display: none;
+    width: 100px;
+  }
+  

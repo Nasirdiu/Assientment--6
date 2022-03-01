@@ -2,7 +2,7 @@ const phoneSearch = () => {
   const searchInput = document.getElementById("Search-input");
   //error
   const error = document.getElementById("error");
-
+  spinner();
   const SearchValue = searchInput.value;
   searchInput.value = "";
   if (!isNaN(SearchValue)) {
@@ -38,6 +38,7 @@ const displayPhone = (search) => {
           </div>`;
     
         firstCard.appendChild(div);
+        block();
       });
   }
   
@@ -76,25 +77,28 @@ const detailsDisplay = (show) => {
             <p class="card-title">Others Bluetooth:-${
               show.others?.Bluetooth
                 ? show.others.Bluetooth
-                : "Coming Soon Data"
-            } </p><hr>
-            <p class="card-title">Others GPS:-${
-              show.others?.GPS ? show.others.GPS : "Coming Soon Data"
-            } </p><hr>
-            <p class="card-title">Others USB:-${
-              show.others?.USB ? show.others.USB : "Coming Soon Data"
-            } </p><hr>
-            <p class="card-title">Others WLAN:-${
-              show.others?.WLAN ? show.others.WLAN : "Coming Soon Data"
-            } </p><hr>
-            <p class="card-title">Others Radio:-${
-              show.others?.Radio ? show.others.Radio : "Coming Soon Data"
-            } </p><hr>
-            <p class="card-title">Others NFC:-${
-              show.others?.NFC ? show.others.NFC : "Coming Soon Data"
-            } </p>
+                : "Coming Soon Data..."
+            }.. GPS:-${
+              show.others?.GPS ? show.others.GPS : "Coming Soon Data..."
+            }..USB:-${
+              show.others?.USB ? show.others.USB : "Coming Soon Data.."
+            }..WLAN:-${
+              show.others?.WLAN ? show.others.WLAN : "Coming Soon Data..."
+            } ..Radio:-${
+              show.others?.Radio ? show.others.Radio : "Coming Soon Data.."
+            }.. NFC:-${
+              show.others?.NFC ? show.others.NFC : "Coming Soon Data.."
+            }  
           </div>
       </div>
    `;
   secendCard.appendChild(div);
+};
+
+//spinner
+const spinner = () => {
+  document.getElementById("spinner").style.display = "block";
+};
+const block = () => {
+  document.getElementById("spinner").style.display = "none";
 };
