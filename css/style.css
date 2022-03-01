@@ -1,4 +1,6 @@
 #error{
     display: none;
 }
-
+.card{
+    min-height: 500px;
+}
