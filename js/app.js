@@ -12,20 +12,20 @@ const phoneSearch = () => {
       `https://openapi.programming-hero.com/api/phones?search=${SearchValue}`
     )
       .then((res) => res.json())
-      .then((data) => displayPhone(data.data.slice(0,20)));
+      .then((data) => displayPhone(data.data.slice(0, 20)));
   }
 };
 // phoneSearch();
 const displayPhone = (search) => {
   const firstCard = document.getElementById("first-card");
   firstCard.textContent = "";
-  if(search.length == 0){
+  if (search.length == 0) {
     error.style.display = "block";
-  }else{
+  } else {
     search.forEach((phone) => {
-        const div = document.createElement("div");
-        div.classList.add("col");
-        div.innerHTML = `
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
             <div class="card">
               <img class="w-50 mt-3 img-thumbnail rounded mx-auto" src="${phone.image}" class="card-img-top" alt="..." />
               <div class="card-body">
@@ -36,12 +36,11 @@ const displayPhone = (search) => {
               mb-3">Details</button>
            
           </div>`;
-    
-        firstCard.appendChild(div);
-        block();
-      });
+
+      firstCard.appendChild(div);
+      block();
+    });
   }
-  
 };
 //id show
 const displayId = (id) => {
@@ -71,27 +70,23 @@ const detailsDisplay = (show) => {
               show.mainFeatures.displaySize
             }</p><hr>
             <p class="card-title">Memory:-${show.mainFeatures.memory}  </p><hr>
-            <h4>Sensors Option</h4>
+            <h4>Sensors Option :-</h4>
             <p class="card-title">Sensors:-${show.mainFeatures.sensors} </p><hr>
-            <h4>Other Option</h4>
+            <h4>Other Option:-</h4>
             <p class="card-title">Others Bluetooth:-${
               show.others?.Bluetooth
                 ? show.others.Bluetooth
                 : "Coming Soon Data..."
             }.. GPS:-${
-              show.others?.GPS ? show.others.GPS : "Coming Soon Data..."
-            }..USB:-${
-              show.others?.USB ? show.others.USB : "Coming Soon Data.."
-            }..WLAN:-${
-              show.others?.WLAN ? show.others.WLAN : "Coming Soon Data..."
-            } ..Radio:-${
-              show.others?.Radio ? show.others.Radio : "Coming Soon Data.."
-            }.. NFC:-${
-              show.others?.NFC ? show.others.NFC : "Coming Soon Data.."
-            }  
-          </div>
-      </div>
-   `;
+    show.others?.GPS ? show.others.GPS : "Coming Soon Data..."
+  }..USB:-${show.others?.USB ? show.others.USB : "Coming Soon Data.."}..WLAN:-${
+    show.others?.WLAN ? show.others.WLAN : "Coming Soon Data..."
+  } ..Radio:-${
+    show.others?.Radio ? show.others.Radio : "Coming Soon Data.."
+  }.. NFC:-${show.others?.NFC ? show.others.NFC : "Coming Soon Data.."}  
+                  </div>
+              </div>
+          `;
   secendCard.appendChild(div);
 };
 
